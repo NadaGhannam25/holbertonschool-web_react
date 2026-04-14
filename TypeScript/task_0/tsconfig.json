@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "./dist/",
     "sourceMap": true,
-    "strict": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
     "allowJs": true,
-    "moduleResolution": "node"
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2020", "DOM"],
+    "strict": true
+  }
 }
