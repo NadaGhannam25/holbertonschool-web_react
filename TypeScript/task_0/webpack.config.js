@@ -1,16 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: './js/main.ts',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  resolve: {
-    extensions: ['.ts', '.js'],
+  entry: "./js/main.ts",
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: './dist',
   },
   module: {
     rules: [
@@ -21,17 +18,18 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      templateContent: '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Task 0</title></head><body></body></html>',
+      title: 'TypeScript App',
     }),
     new ForkTsCheckerWebpackPlugin(),
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
-    port: 8564,
-  },
 };

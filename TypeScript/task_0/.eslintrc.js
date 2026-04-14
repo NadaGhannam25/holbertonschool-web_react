@@ -1,16 +1,19 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
-    es2021: true,
+    es6: true,
   },
+  extends: [
+    'airbnb-typescript/base',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/recommended'],
-  ignorePatterns: ['webpack.config.js'],
+  plugins: [
+    '@typescript-eslint',
+  ],
+  rules: {
+  },
 };
